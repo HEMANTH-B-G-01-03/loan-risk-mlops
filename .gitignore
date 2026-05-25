@@ -229,10 +229,7 @@ models/
 
 .mlflow/
 
-dvc.lock
+
 
 .ipynb_checkpoints/
 
-data/raw/
-*.csv
-*.gz
