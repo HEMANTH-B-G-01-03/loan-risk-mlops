@@ -16,14 +16,14 @@ pipeline {
             }
         }
 
-        stage('Stop Existing Container') {
+        stage('Remove Old Container') {
             steps {
                 sh 'docker stop loan-risk-app || true'
                 sh 'docker rm loan-risk-app || true'
             }
         }
 
-        stage('Run Container') {
+        stage('Deploy Container') {
             steps {
                 sh 'docker run -d -p 8000:8000 --name loan-risk-app loan-risk-mlops'
             }
