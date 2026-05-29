@@ -1,15 +1,17 @@
 venv/
-frontend/node_modules/
 .git/
+.github/
 mlruns/
 __pycache__/
 
-data/raw/
-data/processed/
+data/
+.dvc/
 
 notebooks/
 
+frontend/node_modules/
+frontend/dist/
+
 *.csv
 *.gz
-
-frontend/dist/
+*.log
