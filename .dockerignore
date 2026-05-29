@@ -1,0 +1,15 @@
+venv/
+frontend/node_modules/
+.git/
+mlruns/
+__pycache__/
+
+data/raw/
+data/processed/
+
+notebooks/
+
+*.csv
+*.gz
+
+frontend/dist/
