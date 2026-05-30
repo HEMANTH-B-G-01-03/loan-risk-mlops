@@ -94,13 +94,13 @@ stages {
         }
     }
 
-    stage('Health Check') {
-        steps {
-            echo "Checking application health..."
-            sleep(time: 15, unit: 'SECONDS')
-            sh 'curl -f http://localhost:${PORT} || exit 1'
-        }
+  stage('Health Check') {
+    steps {
+        echo "Checking application health..."
+        sleep(time: 15, unit: 'SECONDS')
+        sh 'curl -f http://44.215.103.135:8000'
     }
+}
 
     stage('Deployment Summary') {
         steps {
