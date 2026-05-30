@@ -23,5 +23,4 @@ stages:
       - src/evaluate.py
       - models/loan_risk_model.pkl
       - data/processed
-    outs:
-      - reports/model_evaluation.txt
+  
