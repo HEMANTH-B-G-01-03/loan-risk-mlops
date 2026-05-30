@@ -35,7 +35,7 @@
 pipeline {
 agent any
 
-```
+
 environment {
     IMAGE_NAME = "loan-risk-mlops"
     CONTAINER_NAME = "loan-risk-app"
@@ -128,6 +128,6 @@ post {
         echo "Pipeline execution finished."
     }
 }
-```
+
 
 }
