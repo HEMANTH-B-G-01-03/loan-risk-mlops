@@ -35,7 +35,8 @@ print("Loading dataset...")
 
 df = pd.read_csv(
     RAW_DATA_PATH,
-    low_memory=False
+    low_memory=False,
+      nrows=SAMPLE_SIZE
 )
 
 print(f"Original Dataset Shape: {df.shape}")
@@ -44,12 +45,12 @@ print(f"Original Dataset Shape: {df.shape}")
 # SAMPLE DATA
 # -----------------------------------
 
-print(f"Sampling {SAMPLE_SIZE} rows...")
+# print(f"Sampling {SAMPLE_SIZE} rows...")
 
-df = df.sample(
-    n=SAMPLE_SIZE,
-    random_state=RANDOM_STATE
-)
+# df = df.sample(
+#     n=SAMPLE_SIZE,
+#     random_state=RANDOM_STATE
+# )
 
 print(f"Sampled Dataset Shape: {df.shape}")
 

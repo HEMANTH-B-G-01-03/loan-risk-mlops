@@ -1,33 +1,27 @@
 stages:
-
   preprocess:
     cmd: python src/preprocess.py
     deps:
       - src/preprocess.py
-      - data
+      - data/raw/accepted_2007_to_2018Q4.csv
       - params.yaml
     outs:
-      - data/processed/X_train.csv
-      - data/processed/X_test.csv
-      - data/processed/y_train.csv
-      - data/processed/y_test.csv
+      - data/processed
 
   train:
     cmd: python src/train.py
     deps:
       - src/train.py
-      - data/processed/X_train.csv
-      - data/processed/y_train.csv
+      - data/processed
       - params.yaml
     outs:
-      - models
+      - models/loan_risk_model.pkl
 
   evaluate:
     cmd: python src/evaluate.py
     deps:
       - src/evaluate.py
-      - models
-      - data/processed/X_test.csv
-      - data/processed/y_test.csv
+      - models/loan_risk_model.pkl
+      - data/processed
     outs:
       - reports/model_evaluation.txt
