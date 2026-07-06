@@ -6,6 +6,8 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 
+from prometheus_fastapi_instrumentator import Instrumentator
+
 # -----------------------------------
 # LOAD TRAINED MODEL
 # -----------------------------------
@@ -27,6 +29,7 @@ app = FastAPI(
     description="MLOps-based Loan Default Risk Prediction System",
     version="1.0"
 )
+Instrumentator().instrument(app).expose(app)
 
 # -----------------------------------
 # ENABLE CORS
