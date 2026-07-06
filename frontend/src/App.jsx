@@ -225,7 +225,7 @@ function App() {
     try {
 
       const response = await axios.post(
-        "http://32.199.138.117:8000/predict" , 
+        "http://13.220.128.165:8000/predict" , 
         finalData
       );
 
