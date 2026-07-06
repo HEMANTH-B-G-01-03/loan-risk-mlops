@@ -91,32 +91,66 @@ Security Validation
 ```text
 loan-risk-mlops/
 │
-├── .dvc/                      # DVC configuration
-├── .github/                   # GitHub Actions workflows
-│   └── workflows/
+├── .dvc/                           # DVC configuration and cache
+│   ├── cache/
+│   ├── tmp/
+│   ├── .gitignore
+│   └── config
+│
+├── .github/
+│   └── workflows/                  # GitHub Actions CI/CD workflows
 │
 ├── data/
-│   ├── raw/                   # Raw datasets
-│   └── processed/             # Processed datasets
+│   ├── raw/                        # Raw dataset
+│   └── processed/                  # Processed dataset
 │
-├── models/                    # Trained ML models
-├── notebooks/                 # Jupyter notebooks
-├── reports/                   # Reports and metrics
+├── frontend/                       # React + Vite frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   └── postcss.config.js
+│
+├── mlruns/                         # MLflow experiment tracking
+│   └── models/
+│
+├── models/
+│   └── loan_risk_model.pkl         # Trained ML model
+│
+├── monitoring/
+│   └── prometheus.yml              # Prometheus configuration
+│
+├── notebooks/                      # Jupyter notebooks
+│
+├── reports/                        # Reports and evaluation metrics
 │
 ├── src/
-│   ├── preprocess.py          # Data preprocessing pipeline
-│   ├── train.py               # Model training
-│   ├── evaluate.py            # Model evaluation
-│   ├── predict.py             # Prediction logic
-│   └── app.py                 # FastAPI application
+│   ├── preprocess.py               # Data preprocessing
+│   ├── train.py                    # Model training
+│   ├── evaluate.py                 # Model evaluation
+│   ├── predict.py                  # Prediction pipeline
+│   └── app.py                      # FastAPI backend
 │
-├── tests/                     # Unit tests
+├── tests/                          # Unit tests
 │
-├── Dockerfile                 # Docker configuration
-├── dvc.yaml                   # DVC pipeline
-├── params.yaml                # Hyperparameters
-├── requirements.txt           # Project dependencies
-├── README.md                  # Project documentation
+├── venv/                           # Python virtual environment
+│
+├── Dockerfile                      # Docker configuration
+├── Jenkinsfile                     # Jenkins CI/CD pipeline
+├── dvc.yaml                        # DVC pipeline definition
+├── dvc.lock                        # DVC lock file
+├── params.yaml                     # Training hyperparameters
+├── requirements.txt                # Python dependencies
+├── mlflow.db                       # MLflow tracking database
+├── security_report.txt             # Security scan report
+├── README.md                       # Project documentation
+├── LICENSE                         # Project license
 └── .gitignore
 ```
 
