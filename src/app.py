@@ -8,9 +8,33 @@ import numpy as np
 
 from prometheus_fastapi_instrumentator import Instrumentator
 
+
+from prometheus_client import Counter, Histogram
+import time
 # -----------------------------------
 # LOAD TRAINED MODEL
 # -----------------------------------
+
+
+PREDICTION_COUNTER = Counter(
+    "loan_predictions_total",
+    "Total number of loan predictions"
+)
+
+SAFE_COUNTER = Counter(
+    "safe_predictions_total",
+    "Total safe predictions"
+)
+
+RISKY_COUNTER = Counter(
+    "risky_predictions_total",
+    "Total risky predictions"
+)
+
+PREDICTION_TIME = Histogram(
+    "loan_prediction_duration_seconds",
+    "Time taken for prediction"
+)
 
 MODEL_PATH = "models/loan_risk_model.pkl"
 
@@ -85,9 +109,11 @@ def home():
 # -----------------------------------
 # PREDICTION ROUTE
 # -----------------------------------
-
 @app.post("/predict")
 def predict(data: LoanData):
+
+    # Start timer
+    start = time.time()
 
     # Convert input to numpy array
     input_data = np.array([[
@@ -114,17 +140,13 @@ def predict(data: LoanData):
         data.application_type
     ]])
 
-    # Prediction
     # Probability
     probability = model.predict_proba(input_data)[0][1]
 
-# Custom threshold
+    # Custom threshold
     threshold = 0.35
 
     prediction = 1 if probability > threshold else 0
-
-    # Probability
-    probability = model.predict_proba(input_data)[0][1]
 
     # Risk Label
     risk_label = (
@@ -133,8 +155,22 @@ def predict(data: LoanData):
         else "Safe Customer"
     )
 
+    # -----------------------------
+    # Prometheus Custom Metrics
+    # -----------------------------
+    PREDICTION_COUNTER.inc()
+
+    if prediction == 0:
+        SAFE_COUNTER.inc()
+    else:
+        RISKY_COUNTER.inc()
+
+    PREDICTION_TIME.observe(time.time() - start)
+
     return {
         "prediction": int(prediction),
         "risk_label": risk_label,
         "default_probability": round(float(probability), 4)
     }
+    
+    
