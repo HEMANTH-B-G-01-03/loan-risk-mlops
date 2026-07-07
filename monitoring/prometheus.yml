@@ -6,4 +6,4 @@ scrape_configs:
 
     static_configs:
       - targets:
-          - 172.17.0.3:8000
+          - 3.235.135.192:8000
