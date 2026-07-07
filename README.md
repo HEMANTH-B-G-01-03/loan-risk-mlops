@@ -177,7 +177,7 @@ https://www.kaggle.com/datasets/wordsforthewise/lending-club
 
 ### Dataset Size
 - Large-scale real-world financial dataset
-- ~1.5GB data
+- 2.5GB data
 - Millions of loan records
 
 ---
