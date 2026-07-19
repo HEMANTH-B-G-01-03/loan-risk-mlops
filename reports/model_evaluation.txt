@@ -1,23 +1,23 @@
 Loan Risk Prediction Model Evaluation
 ==================================================
 
-Accuracy  : 0.6845
-Precision : 0.2338
-Recall    : 0.6114
-F1 Score  : 0.3383
+Accuracy  : 0.6605
+Precision : 0.2952
+Recall    : 0.6300
+F1 Score  : 0.4020
 
 Classification Report
 ----------------------------------------
               precision    recall  f1-score   support
 
-           0       0.92      0.70      0.79     17362
-           1       0.23      0.61      0.34      2638
+           0       0.89      0.67      0.76     16378
+           1       0.30      0.63      0.40      3622
 
-    accuracy                           0.68     20000
-   macro avg       0.58      0.65      0.57     20000
-weighted avg       0.83      0.68      0.73     20000
+    accuracy                           0.66     20000
+   macro avg       0.59      0.65      0.58     20000
+weighted avg       0.78      0.66      0.70     20000
 
 
 Confusion Matrix
-[[12076  5286]
- [ 1025  1613]]
+[[10929  5449]
+ [ 1340  2282]]
